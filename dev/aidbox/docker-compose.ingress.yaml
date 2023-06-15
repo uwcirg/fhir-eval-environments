@@ -1,0 +1,21 @@
+---
+version: "3.4"
+services:
+  aidbox:
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.aidbox-${COMPOSE_PROJECT_NAME}.rule=Host(`aidbox.${BASE_DOMAIN}`)
+      - traefik.http.routers.aidbox-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
+      - traefik.http.routers.aidbox-${COMPOSE_PROJECT_NAME}.tls=true
+      - traefik.http.routers.aidbox-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
+
+      # Aidbox does not EXPOSE the ports it listens on, requiring explicit traefik configuration
+      - traefik.http.services.aidbox-${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=8888
+    networks:
+      - ingress
+
+networks:
+  # ingress network
+  ingress:
+    external: true
+    name: external_web

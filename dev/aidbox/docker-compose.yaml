@@ -1,0 +1,39 @@
+services:
+  aidbox:
+    image: healthsamurai/aidboxone:${FHIR_IMAGE_TAG:-edge}
+    environment:
+      AIDBOX_BASE_URL: https://aidbox.${BASE_DOMAIN}
+      AIDBOX_PORT: 8888
+      AIDBOX_ADMIN_ID: admin
+      AIDBOX_ADMIN_PASSWORD: admin
+      AIDBOX_ZEN_ENTRYPOINT: system/box
+      BOX_PROJECT_GIT_TARGET__PATH: /project
+      PGHOST: db
+      PGPORT: 5432
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      PGDATABASE: aidbox
+    env_file:
+      - aidbox.env
+    depends_on:
+      - db
+    volumes:
+      - ./project:/project
+    networks:
+      - internal
+
+  db:
+    image: healthsamurai/aidboxdb:${DB_IMAGE_TAG:-14.5}
+    environment:
+      POSTGRES_DB: aidbox
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    volumes:
+      - db-data:/data
+    networks:
+      - internal
+volumes:
+  db-data: {}
+networks:
+  # internal network for backing services
+  internal:
