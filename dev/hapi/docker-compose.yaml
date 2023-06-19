@@ -1,6 +1,6 @@
 services:
   hapi:
-    image: hapiproject/hapi:${FHIR_IMAGE_TAG:-v6.4.4}
+    image: hapiproject/hapi:${FHIR_IMAGE_TAG:-v6.2.2}
     environment:
       SPRING_CONFIG_LOCATION: file:///opt/application.yaml
       hapi.fhir.server_address: https://hapi.${BASE_DOMAIN}/fhir/
