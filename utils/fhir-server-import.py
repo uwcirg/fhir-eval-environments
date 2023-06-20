@@ -17,6 +17,65 @@ payload = {
         }
     ]
 }
+
+payload = {
+  "resourceType": "Parameters",
+  "parameter": [
+    {
+      "name": "exportUrl",
+      "valueUrl": "https://bulk-data.smarthealthit.org/fhir/$export"
+    },
+    {
+      "name": "exportType",
+      "valueCode": "dynamic"
+    }
+  ]
+}
+
+# https://smilecdr.com/docs/bulk/fhir_bulk_import.html#triggering-a-bulk-import
+payload = {
+  "resourceType": "Parameters",
+  "parameter": [ {
+    "name": "inputFormat",
+    "valueCode": "application/fhir+ndjson"
+  }, {
+    "name": "inputSource",
+    "valueUri": "http://example.com/fhir/"
+  }, {
+    "name": "storageDetail",
+    "part": [ {
+      "name": "type",
+      "valueCode": "https"
+    }, {
+      "name": "credentialHttpBasic",
+      "valueString": "admin:password"
+    }, {
+      "name": "maxBatchResourceCount",
+      "valueString": "500"
+    } ]
+  }, {
+    "name": "input",
+    "part": [ {
+      "name": "type",
+      "valueCode": "Observation"
+    }, {
+      "name": "url",
+      "valueUri": "https://example.com/observations.ndjson"
+    } ]
+  }, {
+    "name": "input",
+    "part": [ {
+      "name": "type",
+      "valueCode": "Patient"
+    }, {
+      "name": "url",
+      "valueUri": "https://example.com/patients.ndjson"
+    } ]
+  } ]
+}
+
+
+
 headers = {
     'Accept': 'application/fhir+json',
     'Prefer': 'respond-async',
