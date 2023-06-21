@@ -4,6 +4,7 @@ services:
     environment:
       SPRING_CONFIG_LOCATION: file:///opt/application.yaml
       hapi.fhir.server_address: https://hapi.${BASE_DOMAIN}/fhir/
+      hapi.fhir.tester.home.server_address: https://hapi.${BASE_DOMAIN}/fhir
       spring.datasource.url: jdbc:postgresql://db:5432/hapifhir
       spring.datasource.username: postgres
       spring.datasource.password: postgres
