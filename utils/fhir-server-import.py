@@ -4,34 +4,6 @@ import requests
 
 base_url = "https://hapi.128.208.230.197.nip.io/fhir"
 url = f"{base_url}/$import"
-# {fileNumber}.{ResourceType}.ndjson
-payload = {
-    "inputFormat": "application/fhir+ndjson",
-    # URI for tracking this set of imported data throughout its lifecycle.
-    # MAY be used to specify a FHIR endpoint that can by the importing system when matching references to previously imported data.
-    "inputSource": base_url,
-    "storageDetail": { "type": "https" },
-    "input": [
-        {
-            "type": "Patient",
-            "url": "https://localhost/patient_ndjson.ndjson"
-        }
-    ]
-}
-
-payload = {
-  "resourceType": "Parameters",
-  "parameter": [
-    {
-      "name": "exportUrl",
-      "valueUrl": "https://bulk-data.smarthealthit.org/fhir/$export"
-    },
-    {
-      "name": "exportType",
-      "valueCode": "dynamic"
-    }
-  ]
-}
 
 # https://smilecdr.com/docs/bulk/fhir_bulk_import.html#triggering-a-bulk-import
 payload = {
@@ -118,7 +90,6 @@ for resource in export_resources:
 headers = {
     "Accept": "application/fhir+json",
     "Prefer": "respond-async",
-    #'Content-Type': 'application/json',
     #'Authorization': 'Bearer <Auth Token>'
 }
 
