@@ -104,6 +104,11 @@ headers = {
     #'Authorization': 'Bearer <Auth Token>'
 }
 
-response = requests.request(method="POST", url=import_url, headers=headers, json=payload)
+export_status_response = requests.request(
+    method="POST",
+    url=import_url,
+    headers=headers,
+    json=payload,
+)
 
 print(response.text)
