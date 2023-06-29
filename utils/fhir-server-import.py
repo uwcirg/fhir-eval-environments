@@ -7,32 +7,43 @@ url = f"{base_url}/$import"
 
 # https://smilecdr.com/docs/bulk/fhir_bulk_import.html#triggering-a-bulk-import
 payload = {
-  "resourceType": "Parameters",
-  "parameter": [ {
-    "name": "inputFormat",
-    "valueCode": "application/fhir+ndjson"
-  }, {
-    "name": "inputSource",
-    "valueUri": base_url,
-  }, {
-    "name": "storageDetail",
-    "part": [ {
-      "name": "type",
-      "valueCode": "https"
-    }, {
-      "name": "maxBatchResourceCount",
-      "valueString": "1000"
-    } ]
-  }, {
-    "name": "input",
-    "part": [ {
-      "name": "type",
-      "valueCode": "Measure"
-    }, {
-      "name": "url",
-      "valueUri": "https://raw.githubusercontent.com/uwcirg/fhir-eval-environments/bfa6570/tests/data/21340.Measure.ndjson"
-    } ]
-  } ]
+    "resourceType": "Parameters",
+    "parameter": [
+        {
+            "name": "inputFormat",
+            "valueCode": "application/fhir+ndjson"
+        }, 
+        {
+            "name": "inputSource",
+            "valueUri": base_url,
+        }, 
+        {
+            "name": "storageDetail",
+            "part": [
+                {
+                    "name": "type",
+                    "valueCode": "https"
+                }, 
+                {
+                    "name": "maxBatchResourceCount",
+                    "valueString": "1000"
+                } 
+            ]
+        }, 
+        {
+            "name": "input",
+            "part": [
+                {
+                    "name": "type",
+                    "valueCode": "Measure"
+                }, 
+                {
+                    "name": "url",
+                    "valueUri": "https://raw.githubusercontent.com/uwcirg/fhir-eval-environments/bfa6570/tests/data/21340.Measure.ndjson"
+                } 
+            ]
+        } 
+    ]
 }
 
 
