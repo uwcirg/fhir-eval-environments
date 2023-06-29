@@ -3,7 +3,7 @@
 import requests
 
 base_url = "https://hapi.128.208.230.197.nip.io/fhir"
-url = f"{base_url}/$import"
+import_url = f"{base_url}/$import"
 
 # https://smilecdr.com/docs/bulk/fhir_bulk_import.html#triggering-a-bulk-import
 payload = {
@@ -104,6 +104,6 @@ headers = {
     #'Authorization': 'Bearer <Auth Token>'
 }
 
-response = requests.request("POST", url, headers=headers, json=payload)
+response = requests.request(method="POST", url=import_url, headers=headers, json=payload)
 
 print(response.text)
