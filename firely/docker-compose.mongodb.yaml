@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  firely:
+    environment:
+      - VONK_Repository=MongoDb
+      - VONK_MongoDbOptions:ConnectionString=mongodb://db/vonkdata
+      - VONK_MongoDbOptions:EntryCollection=vonkentries
+    depends_on:
+      - db
+
+  db:
+    image: mongo

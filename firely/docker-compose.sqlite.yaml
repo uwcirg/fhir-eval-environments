@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+
+  firely:
+    environment:
+      - VONK_Repository=SQLite

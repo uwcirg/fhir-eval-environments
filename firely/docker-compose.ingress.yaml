@@ -1,0 +1,20 @@
+version: "3.4"
+services:
+  firely:
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.firely-${COMPOSE_PROJECT_NAME}.rule=Host(`firely.${BASE_DOMAIN}`)
+      - traefik.http.routers.firely-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
+      - traefik.http.routers.firely-${COMPOSE_PROJECT_NAME}.tls=true
+      - traefik.http.routers.firely-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
+
+      # firely does not EXPOSE the ports it listens on, requiring explicit traefik configuration
+      - traefik.http.services.firely-${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=8888
+    networks:
+      - ingress
+
+networks:
+  # ingress network
+  ingress:
+    external: true
+    name: external_web

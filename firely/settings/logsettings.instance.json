@@ -1,0 +1,29 @@
+{
+    "Serilog": {
+       "WriteTo": [
+          {
+             "Name": "Async",
+             "Args": {
+                "configure": [
+                   {
+                      "Name": "File",
+                      "Args": {
+                          "path": "./log/vonk.log",
+                          "rollingInterval": "Day",
+                          "fileSizeLimitBytes": "",
+                          "retainedFileCountLimit": "7",
+                          "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} {UserId} {Username} [{Application}] [{Level}] [Machine: {MachineName}] [ReqId: {RequestId}] {Message}{NewLine}{Exception}",
+                          "restrictedToMinimumLevel": "Information"
+                    }
+                 }
+              ]
+            }
+          }
+       ],
+       "Enrich": [ "FromLogContext", "WithMachineName", "WithThreadId" ],
+       "Properties": {
+          "Application": "Firely Server",
+          "Environment": "Default"
+       }
+    }
+ }
