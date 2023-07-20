@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Util to upload all given, or available FHIR resources to the given FHIR server"""
-import requests
+import requests, sys
 
-base_url = "https://hapi.128.208.230.197.nip.io/fhir"
+base_url= sys.argv.pop()
+
+# base_url = "https://hapi.128.208.230.197.nip.io/fhir"
 import_url = f"{base_url}/$import"
 
 # https://smilecdr.com/docs/bulk/fhir_bulk_import.html#triggering-a-bulk-import
@@ -30,19 +32,19 @@ payload = {
                 } 
             ]
         }, 
-        {
-            "name": "input",
-            "part": [
-                {
-                    "name": "type",
-                    "valueCode": "Measure"
-                }, 
-                {
-                    "name": "url",
-                    "valueUri": "https://raw.githubusercontent.com/uwcirg/fhir-eval-environments/bfa6570/tests/data/21340.Measure.ndjson"
-                } 
-            ]
-        } 
+        # {
+            # "name": "input",
+            # "part": [
+                # {
+                    # "name": "type",
+                    # "valueCode": "Measure"
+                # }, 
+                # {
+                    # "name": "url",
+                    # "valueUri": "https://raw.githubusercontent.com/uwcirg/fhir-eval-environments/bfa6570/tests/data/21340.Measure.ndjson"
+                # } 
+            # ]
+        # } 
     ]
 }
 
@@ -78,6 +80,7 @@ export_resources = (
     "tests/data/21338.MeasureReport.ndjson",
 )
 
+input_file_parameters = []
 for resource in export_resources:
     resource_type = resource.split(".")[-2]
     full_url = f"{input_base_url}{resource}"
@@ -96,7 +99,9 @@ for resource in export_resources:
         ]
     }
 
-    payload["parameter"].append(param)
+    input_file_parameters.append(param)
+
+payload["parameter"].extend(input_file_parameters)
 
 headers = {
     "Accept": "application/fhir+json",
@@ -111,4 +116,4 @@ export_status_response = requests.request(
     json=payload,
 )
 
-print(response.text)
+print(export_status_response.text)
