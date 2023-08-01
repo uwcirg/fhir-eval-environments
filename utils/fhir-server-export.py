@@ -74,6 +74,7 @@ def main():
         ))
         print("downloading: ", file_item["url"])
         download_file(url=file_item["url"], filename=local_filename)
+        print("saved to: ", local_filename)
 
     errors = complete_json.get("errors")
     if errors:
