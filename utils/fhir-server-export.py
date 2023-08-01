@@ -2,9 +2,10 @@
 """Util to upload all given, or available FHIR resources to the given FHIR server"""
 import requests, sys, time
 
+
 def poll_status(status_poll_url):
     # in seconds
-    max_rety_time = 10*60
+    max_rety_time = 10 * 60
     rety_time = 0
 
     while rety_time < max_rety_time:
@@ -24,22 +25,24 @@ def poll_status(status_poll_url):
         rety_time += retry_after
         time.sleep(retry_after)
 
+
 def download_file(url, filename=None):
     if not filename:
-        filename = url.split('/')[-1]
+        filename = url.split("/")[-1]
     # NOTE the stream=True parameter below
     with requests.get(url, stream=True) as r:
         r.raise_for_status()
-        with open(filename, 'wb') as f:
-            for chunk in r.iter_content(chunk_size=8192): 
+        with open(filename, "wb") as f:
+            for chunk in r.iter_content(chunk_size=8192):
                 # If you have chunk encoded response uncomment if
                 # and set chunk_size parameter to None.
-                #if chunk: 
+                # if chunk:
                 f.write(chunk)
     return filename
 
+
 def main():
-    base_url= sys.argv.pop()
+    base_url = sys.argv.pop()
 
     headers = {
         "Accept": "ndjson",
