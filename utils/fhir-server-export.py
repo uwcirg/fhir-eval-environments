@@ -86,7 +86,14 @@ def main():
         # TODO allow passing querystring params via argparse
     )
     # raise exceptions when response status is not 2XX
-    kickoff_response.raise_for_status()
+    try:
+        kickoff_response.raise_for_status()
+    except requests.exceptions.HTTPError as e:
+        print("recieved error from Hapi in kickoff request")
+        print("response: ", kickoff_response.json())
+        if kickoff_response.status_code == 400:
+            print("recieved 400 in kickoff response; is Bulk Export enabled?")
+        exit(1)
 
     status_poll_url = kickoff_response.headers["Content-Location"]
 
