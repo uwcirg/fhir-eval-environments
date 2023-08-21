@@ -91,7 +91,17 @@ def main():
     status_poll_url = kickoff_response.headers["Content-Location"]
 
     complete_json = poll_status(fixup_url(url=status_poll_url, base_url=base_url))
-    for file_item in complete_json.get("output"):
+    errors = complete_json.get("errors")
+    if errors:
+        print(errors)
+
+    file_items = complete_json.get("output")
+    if not file_items:
+        print("warning: no files listed in Complete status response:")
+        print(complete_json)
+        exit(1)
+
+    for file_item in file_items:
         url = fixup_url(url=file_item["url"], base_url=base_url)
 
         # TODO allow passing directory via argparse
@@ -103,10 +113,6 @@ def main():
         print("downloading: ", url)
         download_file(url=url, filename=local_filename)
         print("saved to: ", local_filename)
-
-    errors = complete_json.get("errors")
-    if errors:
-        print(errors)
 
 
 if __name__ == "__main__":
