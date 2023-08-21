@@ -24,6 +24,11 @@ def fixup_url(url, base_url):
     Replace FHIR base URL in given FHIR API call with different base_url
     Helpful when a FHIR server is configured with a server_name that does not match its public one
     """
+
+    # Hapi ignores server_name configuration
+    if base_url.startswith("https://"):
+        url = url.replace("http://", "https://")
+
     if not url.startswith(base_url):
         second_last_path, last_path = url.split("/")[-2:]
         # FHIR operations
@@ -84,9 +89,6 @@ def main():
     kickoff_response.raise_for_status()
 
     status_poll_url = kickoff_response.headers["Content-Location"]
-    # Hapi ignores server_name configuration
-    if base_url.startswith("https://"):
-        status_poll_url = status_poll_url.replace("http://", "https://")
 
     complete_json = poll_status(fixup_url(url=status_poll_url, base_url=base_url))
     for file_item in complete_json.get("output"):
