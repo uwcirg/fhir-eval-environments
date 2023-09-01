@@ -6,11 +6,13 @@ services:
     depends_on:
       - db
     environment:
-      - VONK_Repository=SQL
-      - VONK_SqlDbOptions:ConnectionString=Initial Catalog=VonkData;Data Source=db,1433;User ID=sa;Password=SQLServerStrong(!)Password*
-      - VONK_SqlDbOptions:SchemaName=vonk
-      - VONK_SqlDbOptions:AutoUpdateDatabase=true
-      - VONK_SqlDbOptions:AutoUpdateConnectionString=Initial Catalog=VonkData;Data Source=db,1433;User ID=sa;Password=SQLServerStrong(!)Password*
+      VONK_Repository: SQL
+      VONK_SqlDbOptions:AutoUpdateConnectionString: Initial Catalog=VonkData;Data
+        Source=db,1433;User ID=sa;Password=SQLServerStrong(!)Password*
+      VONK_SqlDbOptions:AutoUpdateDatabase: "true"
+      VONK_SqlDbOptions:ConnectionString: Initial Catalog=VonkData;Data Source=db,1433;User
+        ID=sa;Password=SQLServerStrong(!)Password*
+      VONK_SqlDbOptions:SchemaName: vonk
 
   db:
     image: mcr.microsoft.com/mssql/server
