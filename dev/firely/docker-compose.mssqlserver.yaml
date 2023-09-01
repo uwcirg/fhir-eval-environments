@@ -19,8 +19,8 @@ services:
     ports:
       - "1433:1433"
     environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=SQLServerStrong(!)Password*
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: SQLServerStrong(!)Password*
     healthcheck:
       test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'SQLServerStrong(!)Password*' -Q 'SELECT 1 FROM VonkData.sys.tables'
       interval: 1m30s
