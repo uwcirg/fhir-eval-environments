@@ -21,8 +21,8 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: SQLServerStrong(!)Password*
-    healthcheck:
-      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'SQLServerStrong(!)Password*' -Q 'SELECT 1 FROM VonkData.sys.tables'
-      interval: 1m30s
-      timeout: 10s
-      retries: 3
+    # healthcheck:
+    #   test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'SQLServerStrong(!)Password*' -Q 'SELECT 1 FROM VonkData.sys.tables'
+    #   interval: 1m30s
+    #   timeout: 10s
+    #   retries: 3
