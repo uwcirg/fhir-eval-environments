@@ -9,7 +9,7 @@ services:
       - traefik.http.routers.firely-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
 
       # firely does not EXPOSE the ports it listens on, requiring explicit traefik configuration
-      - traefik.http.services.firely-${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=8888
+      - traefik.http.services.firely-${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=8088
     networks:
       - ingress
 

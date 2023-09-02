@@ -2,7 +2,7 @@ services:
   firely:
     image: firely/server
     ports:
-      - "8080:4080"
+      - "8088:4080"
     volumes:
       - ./license/firelyserver-license.json:/app/firelyserver-license.json
       - ./settings/appsettings.instance.json:/app/appsettings.instance.json
