@@ -4,4 +4,4 @@ services:
 
   firely:
     environment:
-      - VONK_Repository=SQLite
+      VONK_Repository: SQLite
