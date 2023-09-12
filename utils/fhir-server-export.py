@@ -42,7 +42,6 @@ def fixup_url(url, base_url):
         return f"{base_url}/{second_last_path}/{last_path}"
 
 
-
 def poll_status(status_poll_url):
     """Poll given status URL until ready (or timeout). Returns response JSON when ready to download"""
     # TODO set via argparse
