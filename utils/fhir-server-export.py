@@ -69,7 +69,7 @@ def poll_status(status_poll_url):
 def kickoff(base_url):
     """Initate a Bulk Export, return endpoint to poll"""
     headers = {
-        "Accept": "ndjson",
+        "Accept": "application/fhir+json",
         "Prefer": "respond-async",
         # TODO set via argparse
         #'Authorization': 'Bearer <Auth Token>'
