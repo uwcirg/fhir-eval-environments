@@ -114,6 +114,7 @@ def kickoff(base_url, no_cache=False, auth_token=None, type=None):
 def main():
     parser = argparse.ArgumentParser(description="Download FHIR resources using Bulk Export")
     parser.add_argument("base_url", help="FHIR base URL")
+    parser.add_argument("--directory", action="store", help="Save files to given directory", default="./")
     parser.add_argument("--no-cache", action="store_true", help="Disable server-side caching")
     parser.add_argument("--auth-token", action="store", help="Use given token to authenticate")
     parser.add_argument("--type", action="store", help="Restrict Export to specific (comma-separated) resource types; see _type")
@@ -135,12 +136,12 @@ def main():
     for file_item in file_items:
         url = fixup_url(url=file_item["url"], base_url=args.base_url)
 
-        # TODO allow passing directory via argparse
         local_filename = ".".join((
             url.split("/")[-1],
             file_item["type"],
             "ndjson",
         ))
+        local_filename = f"{args.directory}{local_filename}"
         print("downloading: ", url)
         download_file(url=url, filename=local_filename, auth_token=args.auth_token)
         print("saved to: ", local_filename)
