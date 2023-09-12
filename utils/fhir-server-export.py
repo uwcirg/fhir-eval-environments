@@ -66,7 +66,8 @@ def poll_status(status_poll_url):
         rety_time += retry_after
         time.sleep(retry_after)
 
-def kickoff(base_url):
+
+def kickoff(base_url, no_cache=False):
     """Initate a Bulk Export, return endpoint to poll"""
     headers = {
         "Accept": "application/fhir+json",
@@ -74,6 +75,10 @@ def kickoff(base_url):
         # TODO set via argparse
         #'Authorization': 'Bearer <Auth Token>'
     }
+
+    if no_cache:
+        print("server-side caching disabled")
+        headers["Cache-control"] = "no-cache"
 
     kickoff_response = requests.post(
         url=f"{base_url}/$export",
@@ -92,12 +97,15 @@ def kickoff(base_url):
 
     return kickoff_response.headers["Content-Location"]
 
+
 def main():
     parser = argparse.ArgumentParser(description="Download FHIR resources using Bulk Export")
     parser.add_argument("base_url", help="FHIR base URL")
+    parser.add_argument("--no-cache", action="store_true", help="Disable server-side caching")
+
     args = parser.parse_args()
 
-    status_poll_url = kickoff(base_url=args.base_url)
+    status_poll_url = kickoff(base_url=args.base_url, no_cache=args.no_cache)
     complete_json = poll_status(fixup_url(url=status_poll_url, base_url=args.base_url))
     errors = complete_json.get("errors")
     if errors:
