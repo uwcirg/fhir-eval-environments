@@ -75,13 +75,14 @@ def poll_status(status_poll_url, auth_token=None):
         time.sleep(retry_after)
 
 
-def kickoff(base_url, no_cache=False, auth_token=None):
+def kickoff(base_url, no_cache=False, auth_token=None, type=None):
     """Initate a Bulk Export, return endpoint to poll"""
     headers = {
         "Accept": "application/fhir+json",
         "Prefer": "respond-async",
     }
 
+    params = {}
     if no_cache:
         print("server-side caching disabled")
         headers["Cache-control"] = "no-cache"
@@ -89,10 +90,13 @@ def kickoff(base_url, no_cache=False, auth_token=None):
     if auth_token is not None:
         headers["Authorization"] = f"Bearer {auth_token}"
 
+    if type is not None:
+        params["_type"] = type
+
     kickoff_response = requests.post(
         url=f"{base_url}/$export",
         headers=headers,
-        # TODO allow passing querystring params via argparse
+        params=params,
     )
     # raise exceptions when response status is not 2XX
     try:
@@ -112,6 +116,7 @@ def main():
     parser.add_argument("base_url", help="FHIR base URL")
     parser.add_argument("--no-cache", action="store_true", help="Disable server-side caching")
     parser.add_argument("--auth-token", action="store", help="Use given token to authenticate")
+    parser.add_argument("--type", action="store", help="Restrict Export to specific (comma-separated) resource types; see _type")
 
     args = parser.parse_args()
 
