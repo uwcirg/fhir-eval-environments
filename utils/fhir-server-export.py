@@ -91,7 +91,7 @@ def main():
         kickoff_response.raise_for_status()
     except requests.exceptions.HTTPError as e:
         print("recieved error from Hapi in kickoff request")
-        print("response: ", kickoff_response.json())
+        print("response: ", kickoff_response)
         if kickoff_response.status_code == 400:
             print("recieved 400 in kickoff response; is Bulk Export enabled?")
         exit(1)
