@@ -29,17 +29,18 @@ def fixup_url(url, base_url):
     if base_url.startswith("https://"):
         url = url.replace("http://", "https://")
 
-    if not url.startswith(base_url):
-        second_last_path, last_path = url.split("/")[-2:]
-        # FHIR operations
-        if last_path.startswith("$"):
-            return f"{base_url}/{last_path}"
+    if url.startswith(base_url):
+        return url
 
-        # known resources (Hapi FHIR uses Binary)
-        if second_last_path in ("Binary"):
-            return f"{base_url}/{second_last_path}/{last_path}"
+    second_last_path, last_path = url.split("/")[-2:]
+    # FHIR operations
+    if last_path.startswith("$"):
+        return f"{base_url}/{last_path}"
 
-    return url
+    # known resources (Hapi FHIR uses Binary)
+    if second_last_path in ("Binary"):
+        return f"{base_url}/{second_last_path}/{last_path}"
+
 
 
 def poll_status(status_poll_url):
