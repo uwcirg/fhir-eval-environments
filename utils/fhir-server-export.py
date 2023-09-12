@@ -73,6 +73,8 @@ def poll_status(status_poll_url, auth_token=None):
         print(f"waiting {retry_after} seconds")
         rety_time += retry_after
         time.sleep(retry_after)
+    print("timeout exceeded")
+    exit(1)
 
 
 def kickoff(base_url, no_cache=False, auth_token=None, type=None):
