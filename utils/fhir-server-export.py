@@ -3,12 +3,16 @@
 import argparse, requests, sys, time
 
 
-def download_file(url, filename=None):
+def download_file(url, filename=None, auth_token=None):
     """Download given large file via streaming"""
     # https://stackoverflow.com/a/16696317
+    headers = {}
+    if auth_token is not None:
+        headers["Authorization"] = f"Bearer {auth_token}"
+
     if not filename:
         filename = url.split("/")[-1]
-    with requests.get(url, stream=True) as r:
+    with requests.get(url, headers=headers, stream=True) as r:
         r.raise_for_status()
         with open(filename, "wb") as f:
             for chunk in r.iter_content(chunk_size=8192):
@@ -43,15 +47,19 @@ def fixup_url(url, base_url):
         return f"{base_url}/{second_last_path}/{last_path}"
 
 
-def poll_status(status_poll_url):
+def poll_status(status_poll_url, auth_token=None):
     """Poll given status URL until ready (or timeout). Returns response JSON when ready to download"""
     # TODO set via argparse
     # in seconds
     max_rety_time = 10 * 60
     rety_time = 0
 
+    headers = {}
+    if auth_token is not None:
+        headers["Authorization"] = f"Bearer {auth_token}"
+
     while rety_time < max_rety_time:
-        status_poll_response = requests.get(status_poll_url)
+        status_poll_response = requests.get(status_poll_url, headers=headers)
         status_poll_response.raise_for_status()
 
         retry_after = int(status_poll_response.headers.get("Retry-After", 0))
@@ -67,18 +75,19 @@ def poll_status(status_poll_url):
         time.sleep(retry_after)
 
 
-def kickoff(base_url, no_cache=False):
+def kickoff(base_url, no_cache=False, auth_token=None):
     """Initate a Bulk Export, return endpoint to poll"""
     headers = {
         "Accept": "application/fhir+json",
         "Prefer": "respond-async",
-        # TODO set via argparse
-        #'Authorization': 'Bearer <Auth Token>'
     }
 
     if no_cache:
         print("server-side caching disabled")
         headers["Cache-control"] = "no-cache"
+
+    if auth_token is not None:
+        headers["Authorization"] = f"Bearer {auth_token}"
 
     kickoff_response = requests.post(
         url=f"{base_url}/$export",
@@ -102,11 +111,12 @@ def main():
     parser = argparse.ArgumentParser(description="Download FHIR resources using Bulk Export")
     parser.add_argument("base_url", help="FHIR base URL")
     parser.add_argument("--no-cache", action="store_true", help="Disable server-side caching")
+    parser.add_argument("--auth-token", action="store", help="Use given token to authenticate")
 
     args = parser.parse_args()
 
-    status_poll_url = kickoff(base_url=args.base_url, no_cache=args.no_cache)
-    complete_json = poll_status(fixup_url(url=status_poll_url, base_url=args.base_url))
+    status_poll_url = kickoff(base_url=args.base_url, no_cache=args.no_cache, auth_token=args.auth_token)
+    complete_json = poll_status(fixup_url(url=status_poll_url, base_url=args.base_url), auth_token=args.auth_token)
     errors = complete_json.get("errors")
     if errors:
         print(errors)
@@ -127,7 +137,7 @@ def main():
             "ndjson",
         ))
         print("downloading: ", url)
-        download_file(url=url, filename=local_filename)
+        download_file(url=url, filename=local_filename, auth_token=args.auth_token)
         print("saved to: ", local_filename)
 
 
