@@ -23,6 +23,7 @@ def fixup_url(url, base_url):
     """
     Replace FHIR base URL in given FHIR API call with different base_url
     Helpful when a FHIR server is configured with a server_name that does not match its public one
+    No generalized solution when urls significantly different
     """
 
     # Hapi ignores server_name configuration
@@ -65,14 +66,8 @@ def poll_status(status_poll_url):
         rety_time += retry_after
         time.sleep(retry_after)
 
-
-def main():
-    # TODO replace with argparse
-    if len(sys.argv) == 1:
-        print("FHIR base URL missing; pass as first argument")
-        exit(1)
-    base_url = sys.argv.pop()
-
+def kickoff(base_url):
+    """Initate a Bulk Export, return endpoint to poll"""
     headers = {
         "Accept": "ndjson",
         "Prefer": "respond-async",
@@ -95,8 +90,16 @@ def main():
             print("recieved 400 in kickoff response; is Bulk Export enabled?")
         exit(1)
 
-    status_poll_url = kickoff_response.headers["Content-Location"]
+    return kickoff_response.headers["Content-Location"]
 
+def main():
+    # TODO replace with argparse
+    if len(sys.argv) == 1:
+        print("FHIR base URL missing; pass as first argument")
+        exit(1)
+    base_url = sys.argv.pop()
+
+    status_poll_url = kickoff(base_url=base_url)
     complete_json = poll_status(fixup_url(url=status_poll_url, base_url=base_url))
     errors = complete_json.get("errors")
     if errors:
