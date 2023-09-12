@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Util to download all resources from the given FHIR server"""
-import requests, sys, time
+import argparse, requests, sys, time
 
 
 def download_file(url, filename=None):
@@ -93,14 +93,12 @@ def kickoff(base_url):
     return kickoff_response.headers["Content-Location"]
 
 def main():
-    # TODO replace with argparse
-    if len(sys.argv) == 1:
-        print("FHIR base URL missing; pass as first argument")
-        exit(1)
-    base_url = sys.argv.pop()
+    parser = argparse.ArgumentParser(description="Download FHIR resources using Bulk Export")
+    parser.add_argument("base_url", help="FHIR base URL")
+    args = parser.parse_args()
 
-    status_poll_url = kickoff(base_url=base_url)
-    complete_json = poll_status(fixup_url(url=status_poll_url, base_url=base_url))
+    status_poll_url = kickoff(base_url=args.base_url)
+    complete_json = poll_status(fixup_url(url=status_poll_url, base_url=args.base_url))
     errors = complete_json.get("errors")
     if errors:
         print(errors)
@@ -112,7 +110,7 @@ def main():
         exit(1)
 
     for file_item in file_items:
-        url = fixup_url(url=file_item["url"], base_url=base_url)
+        url = fixup_url(url=file_item["url"], base_url=args.base_url)
 
         # TODO allow passing directory via argparse
         local_filename = ".".join((
