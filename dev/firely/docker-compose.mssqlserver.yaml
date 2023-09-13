@@ -15,14 +15,9 @@ services:
       VONK_SqlDbOptions:SchemaName: vonk
 
   db:
-    image: mcr.microsoft.com/mssql/server
-    ports:
-      - "1433:1433"
+    image: mcr.microsoft.com/mssql/server$:{DB_IMAGE_TAG:-2022-latest}
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: SQLServerStrong(!)Password*
-    # healthcheck:
-    #   test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'SQLServerStrong(!)Password*' -Q 'SELECT 1 FROM VonkData.sys.tables'
-    #   interval: 1m30s
-    #   timeout: 10s
-    #   retries: 3
+    networks:
+      - internal
