@@ -6,6 +6,7 @@ services:
     depends_on:
       - db
     environment:
+      # https://docs.fire.ly/projects/Firely-Server/en/latest/setting_up_firely_server/deployment/docker.html#running-docker-with-a-sql-server-container
       VONK_Repository: SQL
       VONK_SqlDbOptions:AutoUpdateConnectionString: Initial Catalog=VonkData;Data
         Source=db,1433;User ID=sa;Password=SQLServerStrong(!)Password*
