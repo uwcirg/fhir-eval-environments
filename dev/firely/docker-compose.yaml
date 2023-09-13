@@ -6,6 +6,6 @@ services:
     volumes:
       - ./license/firelyserver-license.json:/app/firelyserver-license.json:ro
       - ./settings/appsettings.instance.json:/app/appsettings.instance.json
-      - ./settings/logsettings.instance.json:/app/logsettings.instance.json
+      - ./settings/logsettings.instance.json:/app/logsettings.instance.json:ro
       - ./data:/app/data
       - ./log:/app/log
