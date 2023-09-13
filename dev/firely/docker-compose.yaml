@@ -4,7 +4,7 @@ services:
     ports:
       - "8088:4080"
     volumes:
-      - ./license/firelyserver-license.json:/app/firelyserver-license.json
+      - ./license/firelyserver-license.json:/app/firelyserver-license.json:ro
       - ./settings/appsettings.instance.json:/app/appsettings.instance.json
       - ./settings/logsettings.instance.json:/app/logsettings.instance.json
       - ./data:/app/data
