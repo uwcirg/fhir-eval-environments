@@ -2,7 +2,7 @@ version: '3'
 
 services:
   firely:
-    image: firely/server
+    image: firely/server:${FHIR_IMAGE_TAG:-5.2.0}
     environment:
       VONK_Administration:Repository: SQLite
       VONK_Administration:Security:AllowedNetworks:
