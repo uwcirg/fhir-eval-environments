@@ -47,17 +47,14 @@ def fixup_url(url, base_url):
         return f"{base_url}/{second_last_path}/{last_path}"
 
 
-def poll_status(status_poll_url, auth_token=None):
+def poll_status(status_poll_url, auth_token=None, max_rety_time=600):
     """Poll given status URL until ready (or timeout). Returns response JSON when ready to download"""
-    # TODO set via argparse
-    # in seconds
-    max_rety_time = 10 * 60
-    rety_time = 0
 
     headers = {}
     if auth_token is not None:
         headers["Authorization"] = f"Bearer {auth_token}"
 
+    rety_time = 0
     while rety_time < max_rety_time:
         status_poll_response = requests.get(status_poll_url, headers=headers)
         status_poll_response.raise_for_status()
@@ -118,13 +115,14 @@ def main():
     parser.add_argument("base_url", help="FHIR base URL")
     parser.add_argument("--directory", action="store", help="Save files to given directory", default="./")
     parser.add_argument("--no-cache", action="store_true", help="Disable server-side caching")
+    parser.add_argument("--max-timeout", action="store", help="Max timeout in seconds before failing", type=int, default=60*10)
     parser.add_argument("--auth-token", action="store", help="Use given token to authenticate")
     parser.add_argument("--type", action="store", help="Restrict Export to specific (comma-separated) resource types; see _type")
 
     args = parser.parse_args()
 
     status_poll_url = kickoff(base_url=args.base_url, no_cache=args.no_cache, auth_token=args.auth_token)
-    complete_json = poll_status(fixup_url(url=status_poll_url, base_url=args.base_url), auth_token=args.auth_token)
+    complete_json = poll_status(fixup_url(url=status_poll_url, base_url=args.base_url), auth_token=args.auth_token, max_rety_time=args.max_timeout)
     errors = complete_json.get("errors")
     if errors:
         print(errors)
