@@ -14,6 +14,16 @@ services:
       VONK_SqlDbOptions:ConnectionString: Initial Catalog=VonkData;Data Source=db,1433;User
         ID=sa;Password=SQLServerStrong(!)Password*
       VONK_SqlDbOptions:SchemaName: vonk
+      # Admin DB configuration
+      # https://docs.fire.ly/projects/Firely-Server/en/latest/maintenance/administration_api.html
+      VONK_Administration:Repository: SQL
+      VONK_Administration:SqlDbOptions:SchemaName: vonkadmin
+      VONK_Administration:SqlDbOptions:ConnectionString: Initial Catalog=VonkAdmin;Data Source=db,1433;User ID=sa;Password=SQLServerStrong(!)Password*
+      VONK_Administration:SqlDbOptions:AutoUpdateDatabase: "true"
+      VONK_Administration:SqlDbOptions:AutoUpdateConnectionString: Initial Catalog=VonkAdmin;Data Source=db,1433;User ID=sa;Password=SQLServerStrong(!)Password*
+    networks:
+      - internal
+      - ingress
 
   db:
     image: mcr.microsoft.com/mssql/server$:{DB_IMAGE_TAG:-2022-latest}
@@ -22,3 +32,7 @@ services:
       SA_PASSWORD: SQLServerStrong(!)Password*
     networks:
       - internal
+
+networks:
+  # internal network for backing services
+  internal:

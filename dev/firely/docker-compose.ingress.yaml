@@ -15,4 +15,3 @@ networks:
   ingress:
     external: true
     name: external_web
-  internal:

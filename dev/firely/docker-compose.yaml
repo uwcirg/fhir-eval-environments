@@ -3,11 +3,6 @@ version: '3'
 services:
   firely:
     image: firely/server:${FHIR_IMAGE_TAG:-5.2.0}
-    environment:
-      VONK_Administration:Repository: SQLite
-      VONK_Administration:Security:AllowedNetworks:0: "127.0.0.1"
-      VONK_Administration:Security:AllowedNetworks:1: "0.0.0.0/0"
-      VONK_Administration:Security:AllowedNetworks:2: "::1"
     volumes:
       - ./license/firelyserver-license.json:/app/firelyserver-license.json:ro
       - ./settings/logsettings.instance.json:/app/logsettings.instance.json:ro
