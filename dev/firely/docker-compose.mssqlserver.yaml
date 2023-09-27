@@ -26,7 +26,7 @@ services:
       - ingress
 
   db:
-    image: mcr.microsoft.com/mssql/server$:{DB_IMAGE_TAG:-2022-latest}
+    image: mcr.microsoft.com/mssql/server:${DB_IMAGE_TAG:-2022-latest}
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: SQLServerStrong(!)Password*
