@@ -121,7 +121,7 @@ def main():
 
     args = parser.parse_args()
 
-    status_poll_url = kickoff(base_url=args.base_url, no_cache=args.no_cache, auth_token=args.auth_token)
+    status_poll_url = kickoff(base_url=args.base_url, no_cache=args.no_cache, auth_token=args.auth_token, type=args.type)
     complete_json = poll_status(fixup_url(url=status_poll_url, base_url=args.base_url), auth_token=args.auth_token, max_rety_time=args.max_timeout)
     errors = complete_json.get("errors")
     if errors:
