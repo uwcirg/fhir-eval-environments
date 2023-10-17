@@ -74,7 +74,7 @@ def poll_status(status_poll_url, auth_token=None, max_rety_time=600):
     exit(1)
 
 
-def kickoff(base_url, no_cache=False, auth_token=None, type=None):
+def kickoff(base_url, no_cache=False, auth_token=None, type=None, since=None):
     """Initate a Bulk Export, return endpoint to poll"""
     headers = {
         "Accept": "application/fhir+json",
@@ -91,6 +91,9 @@ def kickoff(base_url, no_cache=False, auth_token=None, type=None):
 
     if type is not None:
         params["_type"] = type
+
+    if since is not None:
+        params["_since"] = since
 
     kickoff_response = requests.post(
         url=f"{base_url}/$export",
@@ -118,10 +121,11 @@ def main():
     parser.add_argument("--max-timeout", action="store", help="Max timeout in seconds before failing", type=int, default=60*10)
     parser.add_argument("--auth-token", action="store", help="Use given token to authenticate")
     parser.add_argument("--type", action="store", help="Restrict Export to specific (comma-separated) resource types; see _type")
+    parser.add_argument("--since", action="store", help="Restrict Export to resources last updated on or after the given time (format eg '2019-10-25T11:14:00Z'); see _since")
 
     args = parser.parse_args()
 
-    status_poll_url = kickoff(base_url=args.base_url, no_cache=args.no_cache, auth_token=args.auth_token, type=args.type)
+    status_poll_url = kickoff(base_url=args.base_url, no_cache=args.no_cache, auth_token=args.auth_token, type=args.type, since=args.since)
     complete_json = poll_status(fixup_url(url=status_poll_url, base_url=args.base_url), auth_token=args.auth_token, max_rety_time=args.max_timeout)
     errors = complete_json.get("errors")
     if errors:
