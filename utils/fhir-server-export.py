@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Util to download all resources from the given FHIR server"""
-import argparse, requests, sys, time
+import argparse, requests, sys, json, time
 
 
 def download_file(url, filename=None, auth_token=None):
@@ -61,7 +61,7 @@ def poll_status(status_poll_url, auth_token=None, max_rety_time=600):
 
         retry_after = int(status_poll_response.headers.get("Retry-After", 0))
         if not retry_after:
-            return status_poll_response.json()
+            return status_poll_response
 
         progress = status_poll_response.headers.get("X-Progress")
         if progress:
@@ -125,8 +125,24 @@ def main():
 
     args = parser.parse_args()
 
-    status_poll_url = kickoff(base_url=args.base_url, no_cache=args.no_cache, auth_token=args.auth_token, type=args.type, since=args.since)
-    complete_json = poll_status(fixup_url(url=status_poll_url, base_url=args.base_url), auth_token=args.auth_token, max_rety_time=args.max_timeout)
+    status_poll_url = kickoff(
+        base_url=args.base_url,
+        no_cache=args.no_cache,
+        auth_token=args.auth_token,
+        type=args.type,
+        since=args.since,
+    )
+    complete_response = poll_status(
+        fixup_url(url=status_poll_url, base_url=args.base_url),
+        auth_token=args.auth_token,
+        max_rety_time=args.max_timeout,
+    )
+    try:
+        complete_json = complete_response.json()
+    except json.decoder.JSONDecodeError:
+        print("error: export completed successfully, but response is not JSON: ", complete_response.text)
+        exit(1)
+
     errors = complete_json.get("errors")
     if errors:
         print(errors)
