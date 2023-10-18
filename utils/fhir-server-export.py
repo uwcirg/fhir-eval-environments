@@ -95,7 +95,7 @@ def kickoff(base_url, no_cache=False, auth_token=None, type=None, since=None):
     if since is not None:
         params["_since"] = since
 
-    kickoff_response = requests.post(
+    kickoff_response = requests.get(
         url=f"{base_url}/$export",
         headers=headers,
         params=params,
