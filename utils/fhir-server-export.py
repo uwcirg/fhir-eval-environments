@@ -141,6 +141,7 @@ def main():
         complete_json = complete_response.json()
     except json.decoder.JSONDecodeError:
         print("error: export completed successfully, but response is not JSON: ", complete_response.text)
+        print("warning: the Bulk Export request (for Hapi) likely did not return any resources")
         exit(1)
 
     errors = complete_json.get("errors")
