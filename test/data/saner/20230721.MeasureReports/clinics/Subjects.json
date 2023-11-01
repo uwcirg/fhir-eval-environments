@@ -1,0 +1,1202 @@
+[
+    {
+        "name": "Clinic 0",
+        "beds": 26,
+        "icu_beds": 12,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 1",
+        "beds": 14,
+        "icu_beds": 9,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 2",
+        "beds": 39,
+        "icu_beds": 23,
+        "ventilators": 19
+    },
+    {
+        "name": "Clinic 3",
+        "beds": 22,
+        "icu_beds": 9,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 4",
+        "beds": 47,
+        "icu_beds": 33,
+        "ventilators": 18
+    },
+    {
+        "name": "Clinic 5",
+        "beds": 38,
+        "icu_beds": 24,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 6",
+        "beds": 28,
+        "icu_beds": 6,
+        "ventilators": 14
+    },
+    {
+        "name": "Clinic 7",
+        "beds": 15,
+        "icu_beds": 11,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 8",
+        "beds": 40,
+        "icu_beds": 8,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 9",
+        "beds": 6,
+        "icu_beds": 4,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 10",
+        "beds": 43,
+        "icu_beds": 6,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 11",
+        "beds": 42,
+        "icu_beds": 32,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 12",
+        "beds": 47,
+        "icu_beds": 26,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 13",
+        "beds": 35,
+        "icu_beds": 7,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 14",
+        "beds": 16,
+        "icu_beds": 10,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 15",
+        "beds": 41,
+        "icu_beds": 4,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 16",
+        "beds": 14,
+        "icu_beds": 4,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 17",
+        "beds": 5,
+        "icu_beds": 2,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 18",
+        "beds": 33,
+        "icu_beds": 21,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 19",
+        "beds": 30,
+        "icu_beds": 14,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 20",
+        "beds": 42,
+        "icu_beds": 32,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 21",
+        "beds": 46,
+        "icu_beds": 6,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 22",
+        "beds": 35,
+        "icu_beds": 14,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 23",
+        "beds": 22,
+        "icu_beds": 7,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 24",
+        "beds": 10,
+        "icu_beds": 4,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 25",
+        "beds": 45,
+        "icu_beds": 11,
+        "ventilators": 14
+    },
+    {
+        "name": "Clinic 26",
+        "beds": 27,
+        "icu_beds": 15,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 27",
+        "beds": 14,
+        "icu_beds": 10,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 28",
+        "beds": 11,
+        "icu_beds": 2,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 29",
+        "beds": 23,
+        "icu_beds": 3,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 30",
+        "beds": 6,
+        "icu_beds": 4,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 31",
+        "beds": 19,
+        "icu_beds": 3,
+        "ventilators": 6
+    },
+    {
+        "name": "Clinic 32",
+        "beds": 7,
+        "icu_beds": 3,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 33",
+        "beds": 18,
+        "icu_beds": 14,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 34",
+        "beds": 45,
+        "icu_beds": 20,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 35",
+        "beds": 5,
+        "icu_beds": 3,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 36",
+        "beds": 20,
+        "icu_beds": 11,
+        "ventilators": 6
+    },
+    {
+        "name": "Clinic 37",
+        "beds": 7,
+        "icu_beds": 3,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 38",
+        "beds": 48,
+        "icu_beds": 6,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 39",
+        "beds": 46,
+        "icu_beds": 13,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 40",
+        "beds": 49,
+        "icu_beds": 2,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 41",
+        "beds": 22,
+        "icu_beds": 16,
+        "ventilators": 6
+    },
+    {
+        "name": "Clinic 42",
+        "beds": 27,
+        "icu_beds": 4,
+        "ventilators": 13
+    },
+    {
+        "name": "Clinic 43",
+        "beds": 9,
+        "icu_beds": 6,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 44",
+        "beds": 47,
+        "icu_beds": 4,
+        "ventilators": 16
+    },
+    {
+        "name": "Clinic 45",
+        "beds": 20,
+        "icu_beds": 9,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 46",
+        "beds": 34,
+        "icu_beds": 2,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 47",
+        "beds": 20,
+        "icu_beds": 13,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 48",
+        "beds": 12,
+        "icu_beds": 4,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 49",
+        "beds": 29,
+        "icu_beds": 10,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 50",
+        "beds": 19,
+        "icu_beds": 4,
+        "ventilators": 6
+    },
+    {
+        "name": "Clinic 51",
+        "beds": 16,
+        "icu_beds": 12,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 52",
+        "beds": 38,
+        "icu_beds": 5,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 53",
+        "beds": 20,
+        "icu_beds": 14,
+        "ventilators": 6
+    },
+    {
+        "name": "Clinic 54",
+        "beds": 8,
+        "icu_beds": 3,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 55",
+        "beds": 6,
+        "icu_beds": 3,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 56",
+        "beds": 9,
+        "icu_beds": 7,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 57",
+        "beds": 26,
+        "icu_beds": 6,
+        "ventilators": 6
+    },
+    {
+        "name": "Clinic 58",
+        "beds": 31,
+        "icu_beds": 21,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 59",
+        "beds": 13,
+        "icu_beds": 3,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 60",
+        "beds": 43,
+        "icu_beds": 15,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 61",
+        "beds": 20,
+        "icu_beds": 14,
+        "ventilators": 6
+    },
+    {
+        "name": "Clinic 62",
+        "beds": 38,
+        "icu_beds": 23,
+        "ventilators": 13
+    },
+    {
+        "name": "Clinic 63",
+        "beds": 32,
+        "icu_beds": 21,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 64",
+        "beds": 26,
+        "icu_beds": 19,
+        "ventilators": 6
+    },
+    {
+        "name": "Clinic 65",
+        "beds": 14,
+        "icu_beds": 7,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 66",
+        "beds": 39,
+        "icu_beds": 22,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 67",
+        "beds": 42,
+        "icu_beds": 9,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 68",
+        "beds": 42,
+        "icu_beds": 8,
+        "ventilators": 13
+    },
+    {
+        "name": "Clinic 69",
+        "beds": 24,
+        "icu_beds": 5,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 70",
+        "beds": 28,
+        "icu_beds": 16,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 71",
+        "beds": 18,
+        "icu_beds": 2,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 72",
+        "beds": 44,
+        "icu_beds": 7,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 73",
+        "beds": 7,
+        "icu_beds": 4,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 74",
+        "beds": 49,
+        "icu_beds": 4,
+        "ventilators": 23
+    },
+    {
+        "name": "Clinic 75",
+        "beds": 22,
+        "icu_beds": 2,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 76",
+        "beds": 30,
+        "icu_beds": 13,
+        "ventilators": 15
+    },
+    {
+        "name": "Clinic 77",
+        "beds": 45,
+        "icu_beds": 27,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 78",
+        "beds": 48,
+        "icu_beds": 4,
+        "ventilators": 15
+    },
+    {
+        "name": "Clinic 79",
+        "beds": 43,
+        "icu_beds": 20,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 80",
+        "beds": 25,
+        "icu_beds": 19,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 81",
+        "beds": 22,
+        "icu_beds": 4,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 82",
+        "beds": 6,
+        "icu_beds": 3,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 83",
+        "beds": 15,
+        "icu_beds": 10,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 84",
+        "beds": 35,
+        "icu_beds": 9,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 85",
+        "beds": 14,
+        "icu_beds": 5,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 86",
+        "beds": 11,
+        "icu_beds": 6,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 87",
+        "beds": 45,
+        "icu_beds": 32,
+        "ventilators": 12
+    },
+    {
+        "name": "Clinic 88",
+        "beds": 23,
+        "icu_beds": 4,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 89",
+        "beds": 29,
+        "icu_beds": 9,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 90",
+        "beds": 37,
+        "icu_beds": 14,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 91",
+        "beds": 27,
+        "icu_beds": 15,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 92",
+        "beds": 37,
+        "icu_beds": 27,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 93",
+        "beds": 43,
+        "icu_beds": 14,
+        "ventilators": 19
+    },
+    {
+        "name": "Clinic 94",
+        "beds": 16,
+        "icu_beds": 4,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 95",
+        "beds": 26,
+        "icu_beds": 20,
+        "ventilators": 5
+    },
+    {
+        "name": "Clinic 96",
+        "beds": 39,
+        "icu_beds": 20,
+        "ventilators": 17
+    },
+    {
+        "name": "Clinic 97",
+        "beds": 36,
+        "icu_beds": 10,
+        "ventilators": 15
+    },
+    {
+        "name": "Clinic 98",
+        "beds": 17,
+        "icu_beds": 6,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 99",
+        "beds": 46,
+        "icu_beds": 23,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 100",
+        "beds": 26,
+        "icu_beds": 10,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 101",
+        "beds": 31,
+        "icu_beds": 10,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 102",
+        "beds": 22,
+        "icu_beds": 12,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 103",
+        "beds": 31,
+        "icu_beds": 6,
+        "ventilators": 13
+    },
+    {
+        "name": "Clinic 104",
+        "beds": 50,
+        "icu_beds": 13,
+        "ventilators": 6
+    },
+    {
+        "name": "Clinic 105",
+        "beds": 44,
+        "icu_beds": 6,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 106",
+        "beds": 5,
+        "icu_beds": 4,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 107",
+        "beds": 22,
+        "icu_beds": 4,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 108",
+        "beds": 25,
+        "icu_beds": 15,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 109",
+        "beds": 49,
+        "icu_beds": 15,
+        "ventilators": 23
+    },
+    {
+        "name": "Clinic 110",
+        "beds": 49,
+        "icu_beds": 37,
+        "ventilators": 21
+    },
+    {
+        "name": "Clinic 111",
+        "beds": 23,
+        "icu_beds": 4,
+        "ventilators": 12
+    },
+    {
+        "name": "Clinic 112",
+        "beds": 37,
+        "icu_beds": 19,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 113",
+        "beds": 14,
+        "icu_beds": 8,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 114",
+        "beds": 6,
+        "icu_beds": 3,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 115",
+        "beds": 6,
+        "icu_beds": 3,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 116",
+        "beds": 20,
+        "icu_beds": 7,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 117",
+        "beds": 38,
+        "icu_beds": 16,
+        "ventilators": 18
+    },
+    {
+        "name": "Clinic 118",
+        "beds": 40,
+        "icu_beds": 15,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 119",
+        "beds": 47,
+        "icu_beds": 32,
+        "ventilators": 18
+    },
+    {
+        "name": "Clinic 120",
+        "beds": 18,
+        "icu_beds": 8,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 121",
+        "beds": 47,
+        "icu_beds": 16,
+        "ventilators": 22
+    },
+    {
+        "name": "Clinic 122",
+        "beds": 39,
+        "icu_beds": 14,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 123",
+        "beds": 19,
+        "icu_beds": 9,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 124",
+        "beds": 24,
+        "icu_beds": 11,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 125",
+        "beds": 33,
+        "icu_beds": 22,
+        "ventilators": 16
+    },
+    {
+        "name": "Clinic 126",
+        "beds": 41,
+        "icu_beds": 8,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 127",
+        "beds": 44,
+        "icu_beds": 24,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 128",
+        "beds": 25,
+        "icu_beds": 15,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 129",
+        "beds": 41,
+        "icu_beds": 4,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 130",
+        "beds": 49,
+        "icu_beds": 29,
+        "ventilators": 23
+    },
+    {
+        "name": "Clinic 131",
+        "beds": 23,
+        "icu_beds": 9,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 132",
+        "beds": 41,
+        "icu_beds": 18,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 133",
+        "beds": 45,
+        "icu_beds": 30,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 134",
+        "beds": 25,
+        "icu_beds": 14,
+        "ventilators": 5
+    },
+    {
+        "name": "Clinic 135",
+        "beds": 49,
+        "icu_beds": 11,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 136",
+        "beds": 9,
+        "icu_beds": 7,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 137",
+        "beds": 39,
+        "icu_beds": 9,
+        "ventilators": 17
+    },
+    {
+        "name": "Clinic 138",
+        "beds": 20,
+        "icu_beds": 4,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 139",
+        "beds": 31,
+        "icu_beds": 5,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 140",
+        "beds": 27,
+        "icu_beds": 19,
+        "ventilators": 14
+    },
+    {
+        "name": "Clinic 141",
+        "beds": 25,
+        "icu_beds": 11,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 142",
+        "beds": 19,
+        "icu_beds": 14,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 143",
+        "beds": 36,
+        "icu_beds": 25,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 144",
+        "beds": 20,
+        "icu_beds": 11,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 145",
+        "beds": 43,
+        "icu_beds": 9,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 146",
+        "beds": 12,
+        "icu_beds": 9,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 147",
+        "beds": 39,
+        "icu_beds": 14,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 148",
+        "beds": 8,
+        "icu_beds": 4,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 149",
+        "beds": 36,
+        "icu_beds": 27,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 150",
+        "beds": 33,
+        "icu_beds": 9,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 151",
+        "beds": 16,
+        "icu_beds": 12,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 152",
+        "beds": 8,
+        "icu_beds": 6,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 153",
+        "beds": 47,
+        "icu_beds": 24,
+        "ventilators": 14
+    },
+    {
+        "name": "Clinic 154",
+        "beds": 46,
+        "icu_beds": 8,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 155",
+        "beds": 45,
+        "icu_beds": 7,
+        "ventilators": 22
+    },
+    {
+        "name": "Clinic 156",
+        "beds": 49,
+        "icu_beds": 16,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 157",
+        "beds": 14,
+        "icu_beds": 2,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 158",
+        "beds": 17,
+        "icu_beds": 9,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 159",
+        "beds": 49,
+        "icu_beds": 20,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 160",
+        "beds": 40,
+        "icu_beds": 19,
+        "ventilators": 19
+    },
+    {
+        "name": "Clinic 161",
+        "beds": 39,
+        "icu_beds": 11,
+        "ventilators": 16
+    },
+    {
+        "name": "Clinic 162",
+        "beds": 45,
+        "icu_beds": 14,
+        "ventilators": 22
+    },
+    {
+        "name": "Clinic 163",
+        "beds": 17,
+        "icu_beds": 10,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 164",
+        "beds": 15,
+        "icu_beds": 5,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 165",
+        "beds": 42,
+        "icu_beds": 5,
+        "ventilators": 16
+    },
+    {
+        "name": "Clinic 166",
+        "beds": 23,
+        "icu_beds": 16,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 167",
+        "beds": 17,
+        "icu_beds": 8,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 168",
+        "beds": 6,
+        "icu_beds": 4,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 169",
+        "beds": 41,
+        "icu_beds": 27,
+        "ventilators": 19
+    },
+    {
+        "name": "Clinic 170",
+        "beds": 22,
+        "icu_beds": 13,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 171",
+        "beds": 13,
+        "icu_beds": 5,
+        "ventilators": 6
+    },
+    {
+        "name": "Clinic 172",
+        "beds": 26,
+        "icu_beds": 5,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 173",
+        "beds": 49,
+        "icu_beds": 35,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 174",
+        "beds": 42,
+        "icu_beds": 29,
+        "ventilators": 11
+    },
+    {
+        "name": "Clinic 175",
+        "beds": 13,
+        "icu_beds": 2,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 176",
+        "beds": 24,
+        "icu_beds": 15,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 177",
+        "beds": 22,
+        "icu_beds": 9,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 178",
+        "beds": 33,
+        "icu_beds": 11,
+        "ventilators": 5
+    },
+    {
+        "name": "Clinic 179",
+        "beds": 49,
+        "icu_beds": 4,
+        "ventilators": 13
+    },
+    {
+        "name": "Clinic 180",
+        "beds": 14,
+        "icu_beds": 6,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 181",
+        "beds": 42,
+        "icu_beds": 30,
+        "ventilators": 15
+    },
+    {
+        "name": "Clinic 182",
+        "beds": 18,
+        "icu_beds": 6,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 183",
+        "beds": 42,
+        "icu_beds": 15,
+        "ventilators": 12
+    },
+    {
+        "name": "Clinic 184",
+        "beds": 12,
+        "icu_beds": 8,
+        "ventilators": 5
+    },
+    {
+        "name": "Clinic 185",
+        "beds": 29,
+        "icu_beds": 4,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 186",
+        "beds": 28,
+        "icu_beds": 18,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 187",
+        "beds": 40,
+        "icu_beds": 28,
+        "ventilators": 15
+    },
+    {
+        "name": "Clinic 188",
+        "beds": 42,
+        "icu_beds": 2,
+        "ventilators": 10
+    },
+    {
+        "name": "Clinic 189",
+        "beds": 43,
+        "icu_beds": 15,
+        "ventilators": 20
+    },
+    {
+        "name": "Clinic 190",
+        "beds": 45,
+        "icu_beds": 10,
+        "ventilators": 12
+    },
+    {
+        "name": "Clinic 191",
+        "beds": 7,
+        "icu_beds": 4,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 192",
+        "beds": 25,
+        "icu_beds": 11,
+        "ventilators": 3
+    },
+    {
+        "name": "Clinic 193",
+        "beds": 33,
+        "icu_beds": 22,
+        "ventilators": 12
+    },
+    {
+        "name": "Clinic 194",
+        "beds": 19,
+        "icu_beds": 11,
+        "ventilators": 4
+    },
+    {
+        "name": "Clinic 195",
+        "beds": 17,
+        "icu_beds": 2,
+        "ventilators": 7
+    },
+    {
+        "name": "Clinic 196",
+        "beds": 29,
+        "icu_beds": 11,
+        "ventilators": 8
+    },
+    {
+        "name": "Clinic 197",
+        "beds": 48,
+        "icu_beds": 31,
+        "ventilators": 9
+    },
+    {
+        "name": "Clinic 198",
+        "beds": 23,
+        "icu_beds": 17,
+        "ventilators": 2
+    },
+    {
+        "name": "Clinic 199",
+        "beds": 27,
+        "icu_beds": 7,
+        "ventilators": 12
+    }
+]
