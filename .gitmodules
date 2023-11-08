@@ -1,3 +1,6 @@
 [submodule "dev/aidbox/project"]
 	path = dev/aidbox/project
 	url = https://github.com/Aidbox/fhir-r4-configuration-project
+[submodule "test/FhirLoader"]
+	path = test/FhirLoader
+	url = https://github.com/uwcirg/FhirLoader.git
