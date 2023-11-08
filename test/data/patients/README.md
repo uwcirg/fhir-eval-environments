@@ -8,7 +8,7 @@ Generated using [Synthea](https://github.com/synthetichealth/synthea) using
 
 *Set `exporter.pretty_print = false` in `src/main/resources/synthea.properties` to reduce output size*
 
-### 20230929.synthea/
+### 20230929.synthea.full/
 Folder containing synthetic patient data Bundles
 
 - fhir/
@@ -17,3 +17,11 @@ Folder containing synthetic patient data Bundles
 - metadata/
     - Contains metadata file with generation information 
 
+### 20230929.synthea.partial/
+Folder containing synthetic patient data Bundles
+
+- fhir/
+    - 30 patient medical records
+    - One patient record bundle per file
+- metadata/
+    - Contains metadata file with generation information 
