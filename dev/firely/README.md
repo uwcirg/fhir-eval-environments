@@ -29,7 +29,7 @@ Firely server will not accept requests without a valid product license. Populate
 with a valid `.json` license.
 
 ### Trial License
-To get a trial server license, complete the following steps:
+To get a firely server trial license, complete the following steps:
 
 1. Visit the [Firely Server license page](https://fire.ly/firely-server-trial/) and enter the required information
 2. Open the email from Firely and download the license file
