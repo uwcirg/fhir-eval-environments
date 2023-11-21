@@ -1,0 +1,22 @@
+{
+    "Serilog": {
+        "WriteTo": [
+            {
+                "Name": "Console",
+                "Args": {
+                    "theme": "Serilog.Sinks.SystemConsole.Themes.AnsiConsoleTheme::Code, Serilog.Sinks.Console",
+                    "outputTemplate": "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} <s:{SourceContext}>{NewLine}{Exception}"
+                }
+            }
+        ],
+        "Enrich": [
+            "FromLogContext",
+            "WithMachineName",
+            "WithThreadId"
+        ],
+        "Properties": {
+            "Application": "Firely Server",
+            "Environment": "Default"
+        }
+    }
+}
