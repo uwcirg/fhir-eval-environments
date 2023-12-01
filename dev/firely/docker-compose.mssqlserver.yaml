@@ -23,6 +23,33 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: SQLServerStrong(!)Password*
+    healthcheck:
+      test:
+        - CMD
+        # https://learn.microsoft.com/en-us/sql/tools/sqlcmd/sqlcmd-utility
+        - /opt/mssql-tools/bin/sqlcmd
+
+        # terminate batch job if there is an error
+        - -b
+
+        # Specifies the instance of SQL Server to which to connect
+        - -S localhost
+
+        # The login name or contained database user name
+        - -U
+        - sa
+
+        # A user-specified password
+        - -P
+        - SQLServerStrong(!)Password*
+
+        # Executes a query when sqlcmd starts and then immediately exit
+        - -Q
+        - SELECT 1
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
     networks:
       - internal
 
