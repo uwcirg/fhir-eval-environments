@@ -10,3 +10,11 @@ services:
     volumes:
       - ./license/firelyserver-license.json:/app/firelyserver-license.json:ro
       - ./settings/logsettings.instance.json:/app/logsettings.instance.json:ro
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - --spider
+        - --quiet
+        - http://localhost:4080/metadata
+      start_period: 2m
