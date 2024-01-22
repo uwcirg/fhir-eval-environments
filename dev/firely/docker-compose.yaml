@@ -10,3 +10,6 @@ services:
     volumes:
       - ./license/firelyserver-license.json:/app/firelyserver-license.json:ro
       - ./settings/logsettings.instance.json:/app/logsettings.instance.json:ro
+      - db-data:/app/data
+volumes:
+  db-data: {}
