@@ -4,9 +4,9 @@ services:
   firely:
     image: firely/server:${FHIR_IMAGE_TAG:-5.2.0}
     environment:
-        VONK_Administration:Repository: SQLite
-        VONK_Administration:SQLiteDbOptions:ConnectionString: "Data Source=./data/vonkadmin.db"
-        VONK_Administration:SQLiteDbOptions:AutoUpdateDatabase: "true"
+      VONK_Administration:Repository: SQLite
+      VONK_Administration:SQLiteDbOptions:ConnectionString: "Data Source=./data/vonkadmin.db"
+      VONK_Administration:SQLiteDbOptions:AutoUpdateDatabase: "true"
     volumes:
       - ./license/firelyserver-license.json:/app/firelyserver-license.json:ro
       - ./settings/logsettings.instance.json:/app/logsettings.instance.json:ro
