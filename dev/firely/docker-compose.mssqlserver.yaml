@@ -25,6 +25,10 @@ services:
       SA_PASSWORD: SQLServerStrong(!)Password*
     networks:
       - internal
+    volumes:
+      - db-data:/var/opt/mssql
+  volumes:
+      db-data: {}
 
 networks:
   # internal network for backing services
