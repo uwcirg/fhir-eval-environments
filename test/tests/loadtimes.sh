@@ -11,30 +11,49 @@ output_prefix="$test_directory/tests/results/$timestamp"
 url=""
 threads=1
 token=""
+access_token=""
+bearer_token=""
+client_secret=""
+client_credentials=""
+authority=""
 tests=()
 test_size="partial"
 
 # Usage function
 usage() {
-    echo "Usage: $0 -u <server_url> -f [-t <num_threads>] [-a <access_token>] [<test1> ...]"
+    echo "Usage: $0 -u <server_url> [-f] [-n <num_threads>] [-t <access_token>] [-a <signing_authority>] [-i <client_id>] [-s <client_secret] [<test1> .. <testN>]"
     exit 1
 }
 [ $# -eq 0 ] && usage
 
 # Parse options and their values
-while getopts "u:t::a::f" opt; do
+while getopts "u:n::t::a::i::s::f" opt; do
     case $opt in
         u)
             url="${OPTARG}"
             echo "url is ${url}"
             ;;
-        t)
+        n)
             threads="${OPTARG}"
             echo "threads is $threads"
             ;;
-        a)
-            token="--access-token ${OPTARG}"
+        t)
+            token="${OPTARG}"
+            access_token="--access-token $token"
+            bearer_token="--header 'Authorization: Bearer $token'"
             echo "token is $token"
+            ;;
+        a)
+            authority="--authority ${OPTARG}"
+            echo "signing authority is $authority"
+            ;;
+        i)
+            client_id="--client-id ${OPTARG}"
+            echo "client id is $client_id"
+            ;;
+        s)
+            client_secret="--client-secret ${OPTARG}"
+            echo "client secret is $client_secret"
             ;;
         f)
             test_size="full"
@@ -74,15 +93,21 @@ load_saner() {
             exit 1
         fi
 
+        echo $url >> $output_prefix.saner.txt
+        echo "Start time:" >> $output_prefix.saner.txt
+        date +"%Y.%m.%d.%H%M%S" >> $output_prefix.saner.txt
+
         echo "Loading files from ${folder}"
         # Iterate through each file in the folder
         for file in "$folder"/*; do
             # Check if the item is a file (not a directory)
             if [ -f "$file" ]; then
-                echo "{ time dotnet run -- --fhir-server-url $url --max-degree-of-parallelism $threads --buffer-file-name $file $accessToken >>$output_prefix.saner.txt 2>&1 ; } 2>&1 | grep real >>$output_prefix.saner.txt"
-                { time dotnet run -- --fhir-server-url $url --max-degree-of-parallelism $threads --buffer-file-name $file $accessToken >>$output_prefix.saner.txt 2>&1 ; } 2>&1 | grep real >>$output_prefix.saner.txt
+                echo "{ time dotnet run -- --fhir-server-url $url --max-degree-of-parallelism $threads --buffer-file-name $file --force-post $access_token $client_secret $client_id $authority >> $output_prefix.saner.txt 2>&1 ; } 2>&1 | grep real >> $output_prefix.saner.txt"
+                { time dotnet run -- --fhir-server-url $url --max-degree-of-parallelism $threads --buffer-file-name $file --force-post $access_token $client_secret $client_id $authority >> $output_prefix.saner.txt 2>&1 ; } 2>&1 | grep real >> $output_prefix.saner.txt
             fi
         done
+        echo "End time:" >> $output_prefix.saner.txt
+        date +"%Y.%m.%d.%H%M%S" >> $output_prefix.saner.txt 
     done
 }
 
@@ -90,20 +115,50 @@ load_synthea() {
     # load patient data
     echo "Loading Synthea patients"
 
+    echo $url >> $output_prefix.synthea.txt
+    echo "Start time:" >> $output_prefix.synthea.txt
+    date +"%Y.%m.%d.%H%M%S" >> $output_prefix.synthea.txt
+
     synthea_subdir=(
         "preload"
         "fhir"
     )
     for subdir in ${synthea_subdir[@]}; do
-        folder="$test_directory/data/patients/20230929.synthea.$test_size/$subdir"
+        # folder="$test_directory/data/patients/20230929.synthea.$test_size/$subdir"
+        folder="$test_directory/data/patients/20240122.synthea.$test_size/$subdir"
             # Check if the folder exists
         if [ ! -d "$folder" ]; then
             echo "Folder not found: $folder"
             exit 1
         fi
-        echo "{ time  dotnet run -- --fhir-server-url $url --max-degree-of-parallelism $threads --input-folder $folder --buffer-file-name "./20230929.synthea.$subdir.json" $accessToken >>$output_prefix.synthea.txt 2>&1 ; } 2>&1 | grep real >>$output_prefix.synthea.txt"
-        { time  dotnet run -- --fhir-server-url $url --max-degree-of-parallelism $threads --input-folder $folder --buffer-file-name "./20230929.synthea.$subdir.json" $accessToken >>$output_prefix.synthea.txt 2>&1 ; } 2>&1 | grep real >>$output_prefix.synthea.txt
+        start_time=$(date +%s)
+        for file in "$folder"/*; do
+            if [ -f "$file" ]; then
+                curl_command="curl -s -o /dev/null -w '%{http_code}' --header 'Content-Type: application/json' $bearer_token --data @'$file' $url"
+                echo "$curl_command"
+                http_status_code=$(eval "$curl_command")
+                echo "$http_status_code" >> "$output_prefix.synthea.txt"
+                # Check if the curl command was successful (HTTP status code 2xx)
+                if [ "$http_status_code" -ge 200 ] && [ "$http_status_code" -lt 300 ]; then
+                    echo "Request successful (HTTP status code: $http_status_code)"
+                else
+                    # Output the response if not successful
+                    echo "Request failed with HTTP status code: $http_status_code"
+                    # You might want to include additional error handling or logging here
+                    sleep 1
+                    curl_command_verbose="curl -H 'Content-Type: application/json' $bearer_token --data @'$file' $url"
+                    output=$(eval "$curl_command_verbose")
+                    echo "$output" >> "$output_prefix.synthea.txt"
+                fi
+            fi
+        done
+        end_time=$(date +%s)
+        execution_time=$(($end_time - $start_time))
+        echo "Execution time: $execution_time seconds" >> $output_prefix.synthea.txt
     done
+
+    echo "End time:" >> $output_prefix.synthea.txt
+    date +"%Y.%m.%d.%H%M%S" >> $output_prefix.synthea.txt
 }
 
 # Check if the folder exists
