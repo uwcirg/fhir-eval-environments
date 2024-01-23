@@ -17,11 +17,34 @@ Folder containing synthetic patient data Bundles
 - metadata/
     - Contains metadata file with generation information 
 
+Generation
+
+`$ ./run_synthea -s 981 -p 1000 Washington`
+
 ### 20230929.synthea.partial/
 Folder containing synthetic patient data Bundles
 
 - fhir/
-    - 30 patient medical records
+    - 12 patient medical records
     - One patient record bundle per file
 - metadata/
-    - Contains metadata file with generation information 
+    - Contains metadata file with generation information
+
+Generation
+ - First 12 files from the .full dataset alphabetically
+ - References customized to avoid some reference mismatching
+
+### 20240122.synthea.partial/
+Folder containing synthetic patient data Bundles
+
+- fhir/
+    - 16 patient medical records
+    - One patient record bundle per file
+    - 14,337 patient records
+    - 205 hospital/practitioner records
+- metadata/
+    - Contains metadata file with generation information
+
+Generation
+
+`$ ./run_synthea -s 981 -p 15 Washington`
