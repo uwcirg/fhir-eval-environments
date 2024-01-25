@@ -11,5 +11,14 @@ services:
       - ./license/firelyserver-license.json:/app/firelyserver-license.json:ro
       - ./settings/logsettings.instance.json:/app/logsettings.instance.json:ro
       - db-data:/app/data
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - --spider
+        - --quiet
+        - http://localhost:4080/metadata
+      start_period: 2m
+
 volumes:
   db-data: {}
