@@ -14,13 +14,6 @@ Copy the `.env` file default:
 
 Modify any `.env` files as necessary. Lines that are not commented-out are required, commented lines are optional.
 
-## Deploy
-To pull the latest configured docker images, and re-deploy services as necessary, run the following command:
-
-    docker-compose pull && docker-compose up --detach
-
-Note that the firely app may fail to connect to the database when both are started at the same time.
-
 ### Licensing
 Firely server will not accept requests without a valid product license. Populate the file
 
@@ -34,5 +27,11 @@ To get a firely server trial license, complete the following steps:
 1. Visit the [Firely Server license page](https://fire.ly/firely-server-trial/) and enter the required information
 2. Open the email from Firely and download the license file
 3. Move the license to `/license/firelyserver-license.json` in the deployment location
-4. Run `docker-compose restart firely` to update the service
+4. Follow the deployment steps below or run `docker-compose restart firely` to update an existing service
 
+## Deploy
+To pull the latest configured docker images, and re-deploy services as necessary, run the following command:
+
+    docker-compose pull && docker-compose up --detach
+
+Note that the firely app may fail to connect to the database when both are started at the same time.
