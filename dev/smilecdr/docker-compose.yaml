@@ -1,0 +1,25 @@
+services:
+  smilecdr:
+    image: docker.smilecdr.com/smilecdr:${FHIR_IMAGE_TAG:-2023.11.R01}
+    depends_on:
+      - db
+    networks:
+      - internal
+    volumes:
+      - ./cdr-config-Master.properties:/home/smile/smilecdr/classes/cdr-config-Master.properties:ro
+
+  db:
+    image: postgres:${DB_IMAGE_TAG:-15}
+    environment:
+      POSTGRES_DB: smilecdr
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    volumes:
+      - db-data:/data
+    networks:
+      - internal
+volumes:
+  db-data: {}
+networks:
+  # internal network for backing services
+  internal:
