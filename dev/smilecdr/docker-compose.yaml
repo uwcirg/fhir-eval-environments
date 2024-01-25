@@ -1,0 +1,40 @@
+services:
+  smilecdr:
+    image: docker.smilecdr.com/smilecdr:${FHIR_IMAGE_TAG:-2023.11.R01}
+    environment:
+      SPRING_CONFIG_LOCATION: file:///opt/application.yaml
+      hapi.fhir.server_address: https://hapi.${BASE_DOMAIN}/fhir/
+      hapi.fhir.tester.home.server_address: https://hapi.${BASE_DOMAIN}/fhir
+
+      hapi.fhir.bulk_export_enabled: "true"
+      hapi.fhir.bulk_import_enabled: "true"
+      # allow FHIR resources to be written even if resources they refer to are not present on the same server
+      hapi.fhir.enforce_referential_integrity_on_write: "false"
+
+      spring.datasource.url: jdbc:postgresql://db:5432/hapifhir
+      spring.datasource.username: postgres
+      spring.datasource.password: postgres
+      spring.datasource.driverClassName: org.postgresql.Driver
+      spring.jpa.properties.hibernate.dialect: ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgres94Dialect
+    depends_on:
+      - db
+    networks:
+      - internal
+    volumes:
+      - ./application.yaml:/opt/application.yaml:ro
+
+  db:
+    image: postgres:${DB_IMAGE_TAG:-15}
+    environment:
+      POSTGRES_DB: hapifhir
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    volumes:
+      - db-data:/data
+    networks:
+      - internal
+volumes:
+  db-data: {}
+networks:
+  # internal network for backing services
+  internal:
