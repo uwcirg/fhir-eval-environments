@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  firely:
+    image: firely/server:${FHIR_IMAGE_TAG:-5.2.0}
+    environment:
+      VONK_Administration:Repository: SQLite
+      VONK_Administration:SQLiteDbOptions:ConnectionString: "Data Source=./data/vonkadmin.db"
+      VONK_Administration:SQLiteDbOptions:AutoUpdateDatabase: "true"
+    volumes:
+      - ./license/firelyserver-license.json:/app/firelyserver-license.json:ro
+      - ./settings/logsettings.instance.json:/app/logsettings.instance.json:ro
+      - db-data:/app/data
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - --spider
+        - --quiet
+        - http://localhost:4080/metadata
+      start_period: 2m
+
+volumes:
+  db-data: {}
