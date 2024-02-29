@@ -1,0 +1,51 @@
+---
+version: "3.4"
+services:
+  smilecdr:
+    labels:
+      - traefik.enable=true
+
+      # https://smilecdr.com/docs/installation/docker_container_installation.html#verifying-deployment
+      # Web Admin Console
+      - traefik.http.routers.web-admin-router.entrypoints=websecure
+      - traefik.http.routers.web-admin-router.tls=true
+      - traefik.http.routers.web-admin-router.tls.certresolver=letsencrypt
+
+      - traefik.http.routers.web-admin-router.rule=Host(`web-admin.smilecdr.${BASE_DOMAIN}`)
+      - traefik.http.routers.web-admin-router.service=web-admin-service
+      - traefik.http.services.web-admin-service.loadbalancer.server.port=9100
+
+      # FHIRWeb Console
+      - traefik.http.routers.fhir-web-console-router.entrypoints=websecure
+      - traefik.http.routers.fhir-web-console-router.tls=true
+      - traefik.http.routers.fhir-web-console-router.tls.certresolver=letsencrypt
+
+      - traefik.http.routers.fhir-web-console-router.rule=Host(`fhir-web-console.smilecdr.${BASE_DOMAIN}`)
+      - traefik.http.routers.fhir-web-console-router.service=fhir-web-console-service
+      - traefik.http.services.fhir-web-console-service.loadbalancer.server.port=8001
+
+      # FHIR REST endpoint
+      - traefik.http.routers.fhir-rest-router.entrypoints=websecure
+      - traefik.http.routers.fhir-rest-router.tls=true
+      - traefik.http.routers.fhir-rest-router.tls.certresolver=letsencrypt
+
+      - traefik.http.routers.fhir-rest-router.rule=Host(`fhir-rest.smilecdr.${BASE_DOMAIN}`)
+      - traefik.http.routers.fhir-rest-router.service=fhir-rest-service
+      - traefik.http.services.fhir-rest-service.loadbalancer.server.port=8000
+
+      # JSON Admin API
+      - traefik.http.routers.json-admin-router.entrypoints=websecure
+      - traefik.http.routers.json-admin-router.tls=true
+      - traefik.http.routers.json-admin-router.tls.certresolver=letsencrypt
+
+      - traefik.http.routers.json-admin-router.rule=Host(`json-admin.smilecdr.${BASE_DOMAIN}`)
+      - traefik.http.routers.json-admin-router.service=json-admin-service
+      - traefik.http.services.json-admin-service.loadbalancer.server.port=9000
+    networks:
+      - ingress
+
+networks:
+  # ingress network
+  ingress:
+    external: true
+    name: external_web
