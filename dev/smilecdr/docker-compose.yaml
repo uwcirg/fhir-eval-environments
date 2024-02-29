@@ -5,6 +5,10 @@ services:
       SPRING_CONFIG_LOCATION: file:///opt/application.yaml
       hapi.fhir.server_address: https://hapi.${BASE_DOMAIN}/fhir/
       hapi.fhir.tester.home.server_address: https://hapi.${BASE_DOMAIN}/fhir
+      respect_forward_headers: "true"
+      module.fhir_endpoint.config.respect_forward_headers: "true"
+      # module.fhir_endpoint.config.port
+      module.fhir_endpoint.config.base_url.fixed: https://fhir-rest.smilecdr.${BASE_DOMAIN}
 
       hapi.fhir.bulk_export_enabled: "true"
       hapi.fhir.bulk_import_enabled: "true"
@@ -21,7 +25,8 @@ services:
     networks:
       - internal
     volumes:
-      - ./application.yaml:/opt/application.yaml:ro
+      # - ./application.yaml:/opt/application.yaml:ro
+      - ./cdr-config-Master.properties:/home/smile/smilecdr/classes/cdr-config-Master.properties:ro
 
   db:
     image: postgres:${DB_IMAGE_TAG:-15}
