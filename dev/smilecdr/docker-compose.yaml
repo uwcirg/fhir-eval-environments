@@ -1,6 +1,8 @@
 services:
   smilecdr:
     image: docker.smilecdr.com/smilecdr:${FHIR_IMAGE_TAG:-2023.11.R01}
+    environment:
+      module.fhir_endpoint.config.base_url.fixed: https://fhir-rest.smilecdr.${BASE_DOMAIN}
     depends_on:
       - db
     networks:
