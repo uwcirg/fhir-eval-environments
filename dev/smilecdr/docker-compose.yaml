@@ -2,6 +2,8 @@ services:
   smilecdr:
     image: docker.smilecdr.com/smilecdr:${FHIR_IMAGE_TAG:-2023.11.R01}
     environment:
+      # TODO investigate changing config precedence
+      # NB config values set via .properties files take precedence over environment variables
       module.fhir_endpoint.config.base_url.fixed: https://fhir-rest.smilecdr.${BASE_DOMAIN}
 
       # https://www.smiledigitalhealth.com/smile-guide-postgre-sql
