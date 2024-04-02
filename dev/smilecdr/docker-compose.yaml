@@ -3,6 +3,19 @@ services:
     image: docker.smilecdr.com/smilecdr:${FHIR_IMAGE_TAG:-2023.11.R01}
     environment:
       module.fhir_endpoint.config.base_url.fixed: https://fhir-rest.smilecdr.${BASE_DOMAIN}
+
+      # https://www.smiledigitalhealth.com/smile-guide-postgre-sql
+      # Cluster Manager Configuration
+      module.clustermgr.config.db.driver: POSTGRES_9_4
+      module.clustermgr.config.db.url: jdbc:postgresql://db:5432/smilecdr
+      module.clustermgr.config.db.username: postgres
+      module.clustermgr.config.db.password: postgres
+
+      # Database Configuration
+      module.persistence.config.db.driver: POSTGRES_9_4
+      module.persistence.config.db.url: jdbc:postgresql://db:5432/smilecdr
+      module.persistence.config.db.username: postgres
+      module.persistence.config.db.password: postgres
     depends_on:
       - db
     networks:
