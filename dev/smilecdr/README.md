@@ -1,5 +1,5 @@
-# Hapi FHIR
-Configuration required to deploy a review version of Smile CDR FHIR server
+# SmileCDR
+Configuration required to deploy a review version of SmileCDR FHIR server
 
 ## Setup
 Copy the default env files:
