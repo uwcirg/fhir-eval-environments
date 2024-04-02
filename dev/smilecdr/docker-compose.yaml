@@ -1,5 +1,6 @@
 services:
   smilecdr:
+    # https://smilecdr.com/docs/installation/docker_container_installation.html
     image: docker.smilecdr.com/smilecdr:${FHIR_IMAGE_TAG:-2023.11.R01}
     environment:
       # TODO investigate changing config precedence
