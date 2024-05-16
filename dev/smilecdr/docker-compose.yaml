@@ -1,0 +1,43 @@
+services:
+  smilecdr:
+    # https://smilecdr.com/docs/installation/docker_container_installation.html
+    image: docker.smilecdr.com/smilecdr:${FHIR_IMAGE_TAG:-2023.11.R01}
+    environment:
+      # TODO investigate changing config precedence
+      # NB config values set via .properties files take precedence over environment variables
+      module.fhir_endpoint.config.base_url.fixed: https://fhir-rest.smilecdr.${BASE_DOMAIN}
+
+      # https://www.smiledigitalhealth.com/smile-guide-postgre-sql
+      # Cluster Manager Configuration
+      module.clustermgr.config.db.driver: POSTGRES_9_4
+      module.clustermgr.config.db.url: jdbc:postgresql://db:5432/smilecdr
+      module.clustermgr.config.db.username: postgres
+      module.clustermgr.config.db.password: postgres
+
+      # Database Configuration
+      module.persistence.config.db.driver: POSTGRES_9_4
+      module.persistence.config.db.url: jdbc:postgresql://db:5432/smilecdr
+      module.persistence.config.db.username: postgres
+      module.persistence.config.db.password: postgres
+    depends_on:
+      - db
+    networks:
+      - internal
+    volumes:
+      - ./cdr-config-Master.properties:/home/smile/smilecdr/classes/cdr-config-Master.properties:ro
+
+  db:
+    image: postgres:${DB_IMAGE_TAG:-15}
+    environment:
+      POSTGRES_DB: smilecdr
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    volumes:
+      - db-data:/data
+    networks:
+      - internal
+volumes:
+  db-data: {}
+networks:
+  # internal network for backing services
+  internal:
