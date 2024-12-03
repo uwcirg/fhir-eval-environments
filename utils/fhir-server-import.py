@@ -33,8 +33,28 @@ def build_request_body():
     """Build bulk import POST body from available import files"""
     body = {
         "resourceType": "Parameters",
-        "parameter": [],
+        "parameter": 
+            [
+                {
+                    "name": "inputFormat",
+                    "valueCode": "application/fhir+ndjson",
+                },
+                {
+                    "parameter": "storageDetail",
+                    "part": [
+                        {
+                            "name": "type",
+                            "valueCode": "https",
+                        },
+                        {
+                            "name": "maxBatchResourceCount",
+                            "valueString": "500",
+                        }
+                    ],
+                }
+            ]
         }
+
     for ndjson_file_url in obtain_filelist():
         response = requests.get(ndjson_file_url)
         response.raise_for_status()
@@ -43,10 +63,6 @@ def build_request_body():
         body["parameter"].append({
             "name": "input",
             "part": [
-                {
-                    "name": "inputFormat",
-                    "valueCode": "application/fhir+ndjson",
-                },
                 {
                     "name": "type",
                     "valueCode": resourceType,
@@ -115,7 +131,8 @@ def poll_status(status_poll_url, auth_token=None, max_rety_time=600):
 def kickoff(base_url, auth_token=None):
     """Initate a Bulk Import, return endpoint to poll"""
     body = build_request_body()
-    print(body)
+    print(f"POSTing to {base_url}/$import:")
+    print(json.dumps(body, indent=4))
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/fhir+ndjson",
