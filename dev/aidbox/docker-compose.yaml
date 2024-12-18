@@ -5,7 +5,7 @@ services:
       AIDBOX_BASE_URL: https://aidbox.${BASE_DOMAIN}
       AIDBOX_PORT: 8888
       AIDBOX_ADMIN_ID: admin
-      AIDBOX_ADMIN_PASSWORD: admin
+      AIDBOX_ADMIN_PASSWORD: ${AIDBOX_ADMIN_PASSWORD:-admin}
       AIDBOX_ZEN_ENTRYPOINT: system/box
       BOX_PROJECT_GIT_TARGET__PATH: /project
       PGHOST: db
