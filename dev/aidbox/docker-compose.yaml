@@ -1,6 +1,6 @@
 services:
   aidbox:
-    image: healthsamurai/aidboxone:${FHIR_IMAGE_TAG:-edge}
+    image: healthsamurai/aidboxone:${FHIR_IMAGE_TAG:-2501}
     environment:
       AIDBOX_BASE_URL: https://aidbox.${BASE_DOMAIN}
       AIDBOX_PORT: 8888
