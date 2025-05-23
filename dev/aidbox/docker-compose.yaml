@@ -6,8 +6,6 @@ services:
       AIDBOX_PORT: 8080
       AIDBOX_ADMIN_ID: admin
       AIDBOX_ADMIN_PASSWORD: ${AIDBOX_ADMIN_PASSWORD:-admin}
-      AIDBOX_ZEN_ENTRYPOINT: system/box
-      BOX_PROJECT_GIT_TARGET__PATH: /project
       PGHOST: db
       PGPORT: 5432
       PGUSER: postgres
