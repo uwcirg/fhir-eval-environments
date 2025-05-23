@@ -21,7 +21,7 @@ services:
       - internal
 
   db:
-    image: postgres:${DB_IMAGE_TAG:-14.5}
+    image: postgres:${DB_IMAGE_TAG:-17}
     environment:
       POSTGRES_DB: aidbox
       POSTGRES_PASSWORD: postgres
