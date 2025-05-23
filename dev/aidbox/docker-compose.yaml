@@ -19,6 +19,12 @@ services:
       - ./project:/project
     networks:
       - internal
+    healthcheck:
+      test: curl -f http://localhost:8080/health || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 90
+      start_period: 30s
 
   db:
     image: postgres:${DB_IMAGE_TAG:-17}
