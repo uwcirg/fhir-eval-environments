@@ -1,6 +1,6 @@
 services:
   aidbox:
-    image: healthsamurai/aidboxone:${FHIR_IMAGE_TAG:-2504}
+    image: healthsamurai/aidboxone:${FHIR_IMAGE_TAG:-2510}
     environment:
 
       # Environment variables for Postgres
