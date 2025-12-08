@@ -8,7 +8,6 @@ services:
       BOX_DB_PASSWORD: postgres
       BOX_DB_DATABASE: aidbox
 
-      BOX_WEB_PORT: 8080
       BOX_ROOT_CLIENT_SECRET: BOX_ROOT_CLIENT_SECRET
       BOX_ADMIN_PASSWORD: admin
 
