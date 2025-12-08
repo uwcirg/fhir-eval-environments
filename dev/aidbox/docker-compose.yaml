@@ -2,14 +2,6 @@ services:
   aidbox:
     image: healthsamurai/aidboxone:${FHIR_IMAGE_TAG:-2504}
     environment:
-
-      # Environment variables for Postgres
-      POSTGRES_PORT: '5432'
-      POSTGRES_DB: aidbox
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-
-      # Environment variables for Aidbox
       BOX_DB_HOST: db
       BOX_DB_PORT: 5432
       BOX_DB_USER: postgres
