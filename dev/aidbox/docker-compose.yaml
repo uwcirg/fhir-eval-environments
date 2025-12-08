@@ -7,7 +7,6 @@ services:
       BOX_DB_PASSWORD: postgres
       BOX_DB_DATABASE: aidbox
 
-      BOX_ROOT_CLIENT_SECRET: BOX_ROOT_CLIENT_SECRET
       BOX_ADMIN_PASSWORD: admin
 
       BOX_BOOTSTRAP_FHIR_PACKAGES: "hl7.fhir.r4.core#4.0.1"
