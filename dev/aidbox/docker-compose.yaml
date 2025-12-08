@@ -3,7 +3,6 @@ services:
     image: healthsamurai/aidboxone:${FHIR_IMAGE_TAG:-2504}
     environment:
       BOX_DB_HOST: db
-      BOX_DB_PORT: 5432
       BOX_DB_USER: postgres
       BOX_DB_PASSWORD: postgres
       BOX_DB_DATABASE: aidbox
