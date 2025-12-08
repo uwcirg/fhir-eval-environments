@@ -2,13 +2,16 @@ services:
   aidbox:
     image: healthsamurai/aidboxone:${FHIR_IMAGE_TAG:-2504}
     environment:
+      # https://www.health-samurai.io/docs/aidbox/reference/all-settings
+      # deploy-specific details
+      BOX_WEB_BASE_URL: https://aidbox.${BASE_DOMAIN}
+      BOX_ADMIN_PASSWORD: ${BOX_ADMIN_PASSWORD:-admin}
       BOX_DB_HOST: db
+      BOX_DB_DATABASE: aidbox
       BOX_DB_USER: postgres
       BOX_DB_PASSWORD: postgres
-      BOX_DB_DATABASE: aidbox
 
-      BOX_ADMIN_PASSWORD: admin
-
+      # use recommended values over defaults
       BOX_BOOTSTRAP_FHIR_PACKAGES: "hl7.fhir.r4.core#4.0.1"
       BOX_FHIR_TERMINOLOGY_SERVICE_BASE_URL: https://tx.health-samurai.io/fhir
       BOX_FHIR_SCHEMA_VALIDATION: true
@@ -17,11 +20,10 @@ services:
       BOX_SETTINGS_MODE: read-write
       BOX_FHIR_COMPLIANT_MODE: true
       BOX_FHIR_SEARCH_COMPARISONS: true
-      BOX_FHIR_JSON_SCHEMA_DATETIME_REGEX: '#{:fhir-datetime}'
+      BOX_FHIR_JSON_SCHEMA_DATETIME_REGEX: "#{:fhir-datetime}"
       BOX_FHIR_SEARCH_INCLUDE_CONFORMANT: true
       BOX_FHIR_SEARCH_AUTHORIZE_INLINE_REQUESTS: true
       BOX_SECURITY_AUDIT_LOG_ENABLED: true
-      BOX_WEB_BASE_URL: https://aidbox.${BASE_DOMAIN}
     env_file:
       - aidbox.env
     depends_on:
