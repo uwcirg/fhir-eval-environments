@@ -1,1 +1,4 @@
+# docker compose project configuration file
 .env
+# docker compose environment files (env_file)
+*.env
