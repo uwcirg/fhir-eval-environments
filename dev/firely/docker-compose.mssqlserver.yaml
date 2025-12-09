@@ -1,5 +1,4 @@
 services:
-
   firely:
     depends_on:
       db:
