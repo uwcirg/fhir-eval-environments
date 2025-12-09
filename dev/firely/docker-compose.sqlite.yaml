@@ -3,7 +3,7 @@ services:
     environment:
       VONK_Repository: SQLite
       VONK_SQLiteDbOptions:ConnectionString: "Data Source=./data/vonkdata.db"
-      VONK_SQLiteDbOptions:AutoUpdateDatabase: "true"
+      VONK_SQLiteDbOptions:AutoUpdateDatabase: true
     volumes:
       - db-data:/app/data
 volumes:

@@ -1,4 +1,4 @@
 services:
   firely:
     ports:
-      - "8088:4080"
+      - 8088:4080
