@@ -1,5 +1,3 @@
----
-version: "3.4"
 services:
   hapi:
     labels:
@@ -8,10 +6,6 @@ services:
       - traefik.http.routers.hapi-${COMPOSE_PROJECT_NAME}.entrypoints=websecure
       - traefik.http.routers.hapi-${COMPOSE_PROJECT_NAME}.tls=true
       - traefik.http.routers.hapi-${COMPOSE_PROJECT_NAME}.tls.certresolver=letsencrypt
-
-      # Hapi does not EXPOSE the ports it listens on, requiring explicit traefik configuration
-      - traefik.http.services.hapi-${COMPOSE_PROJECT_NAME}.loadbalancer.server.port=8080
-
 
       # authenticated access
       - traefik.http.routers.hapi-secure-${COMPOSE_PROJECT_NAME}.rule=Host(`hapi-secure.${BASE_DOMAIN}`)
