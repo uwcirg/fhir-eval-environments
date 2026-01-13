@@ -1,0 +1,19 @@
+{
+  "runID": "90b39a33-a2c4-4867-aba1-598dc386393b",
+  "seed": 981,
+  "clinicianSeed": 1705952437935,
+  "referenceTime": "20240122",
+  "endTime": "20240122",
+  "version": "master-branch-latest\n",
+  "patientCount": 16,
+  "providerCount": 1235,
+  "payerCount": 9,
+  "javaVersion": "21",
+  "generate.thread_pool_size": -1,
+  "generatorThreads": 16,
+  "runStartTime": "2024-01-22T19:40:37Z",
+  "runTimeInSeconds": 12,
+  "exporter.years_of_history": "10",
+  "state": "Washington",
+  "modules": "*"
+}
